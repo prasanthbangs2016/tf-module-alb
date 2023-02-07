@@ -8,7 +8,7 @@ resource "aws_lb" "public" {
 
 
   tags = {
-    Environment = "Roboshop-${var.env}"
+    Environment = "Roboshop-${var.env}-public"
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_lb" "private" {
 
 
   tags = {
-    Environment = "production"
+    Environment = "Roboshop-${var.env}-private-alb"
   }
 }
 
