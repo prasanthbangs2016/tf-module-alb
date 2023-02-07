@@ -1,5 +1,5 @@
 resource "aws_lb" "public" {
-  name               = "Roboshop-${var.env}"
+  name               = "Roboshop-${var.env}-public"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.public.id]
@@ -34,7 +34,7 @@ resource "aws_security_group" "public" {
 
 
 resource "aws_lb" "private" {
-  name               = "test-lb-tf"
+  name               = "Roboshop-${var.env}-private"
   internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.private.id]
