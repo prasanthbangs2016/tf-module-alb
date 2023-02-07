@@ -1,3 +1,3 @@
-output "public_tg_arn" {
-  value = aws_lb_target_group.public-http.arn
-}
+#output "public_tg_arn" {
+#  value = aws_lb_target_group.public-http.arn
+#}
