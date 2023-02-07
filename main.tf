@@ -11,6 +11,13 @@ resource "aws_lb" "public" {
     Environment = "Roboshop-${var.env}-public"
   }
 }
+resource "aws_lb_target_group" "public" {
+  name     = "Frontend-${var.env}-public"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
+
 resource "aws_lb_listener" "front_end-https" {
   load_balancer_arn = aws_lb.public.arn
   port              = "443"
@@ -20,7 +27,7 @@ resource "aws_lb_listener" "front_end-https" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.public-https.arn
+    target_group_arn = aws_lb_target_group.public.arn
   }
 }
 resource "aws_lb_listener" "front_end-http" {
@@ -38,19 +45,8 @@ resource "aws_lb_listener" "front_end-http" {
     }
   }
 }
-resource "aws_lb_target_group" "public-http" {
-  name     = "Frontend-${var.env}-public"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-}
 
-resource "aws_lb_target_group" "public-https" {
-  name     = "Frontend-${var.env}-public"
-  port     = 443
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-}
+
 
 resource "aws_security_group" "public" {
   name        = "roboshop-${var.env}-public-alb"
