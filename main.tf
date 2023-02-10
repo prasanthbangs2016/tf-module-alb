@@ -35,6 +35,15 @@ resource "aws_security_group" "public-alb" {
     cidr_blocks      = ["0.0.0.0/0"]
 
   }
+#all traffic allowed from public
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    #exposing to public as it is external
+    cidr_blocks      = ["0.0.0.0/0"]
+
+  }
 
 
   tags = {
