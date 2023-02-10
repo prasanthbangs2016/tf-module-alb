@@ -37,6 +37,7 @@ resource "aws_security_group" "public-alb" {
   }
 #all traffic allowed from public
   egress {
+    description      = "All-traffic-outbound"
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
