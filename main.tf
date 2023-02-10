@@ -78,13 +78,13 @@ resource "aws_route53_record" "public" {
 }
 #5 tgt group 80 ,group of instances ur going to attach
 #this has been added as part app module as it should add only when it is frontend
-#resource "aws_lb_target_group" "public" {
-#  name     = "frontend-${var.env}-tg"
-#  # target group backend is opened with 80port hence the same"
-#  port     = 80
-#  protocol = "HTTP"
-#  vpc_id   = var.vpc_id
-#}
+resource "aws_lb_target_group" "public" {
+  name     = "frontend-${var.env}-tg"
+  # target group backend is opened with 80port hence the same"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
 
 #6 if anyone hitting http,redirect to https(if anyone hitting 80 port redirect to https)
 
