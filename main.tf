@@ -96,7 +96,7 @@ resource "aws_lb_target_group" "public" {
 
   }
 }
-}
+
 
 #6 if anyone hitting http,redirect to https(if anyone hitting 80 port redirect to https)
 
