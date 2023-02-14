@@ -147,6 +147,17 @@ resource "aws_security_group" "private-alb" {
 
   }
 
+  #all traffic allowed from public
+  egress {
+    description      = "All-traffic-outbound"
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    #exposing to public as it is external
+    cidr_blocks      = ["0.0.0.0/0"]
+
+  }
+
 
   tags = {
     Name = "Roboshop-${var.env}-private-alb"
